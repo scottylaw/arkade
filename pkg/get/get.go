@@ -22,37 +22,37 @@ var supportedArchitectures = [...]string{"x86_64", "arm", "amd64", "armv6l", "ar
 // release - whether a single binary, or an archive.
 type Tool struct {
 	// The name of the tool for download
-	Name string
+	Name string `yaml:"name"`
 
 	// Repo is a GitHub repo, when no repo exists, use the same
 	// as the name.
-	Repo string
+	Repo string `yaml:"repo"`
 
 	// Owner is the name of the GitHub account, when no account
 	// exists, use the vendor name lowercase.
-	Owner string
+	Owner string `yaml:"owner"`
 
 	// Version pinned or left empty to pull the latest release
 	// if any only if only BinaryTemplate is specified.
-	Version string
+	Version string `yaml:"version"`
 
 	// Description of what the tool is used for.
-	Description string
+	Description string `yaml:"description"`
 
 	// URLTemplate specifies a Go template for the download URL
 	// override the OS, architecture and extension
 	// All whitespace will be trimmed/
-	URLTemplate string
+	URLTemplate string `yaml:"urlTemplate"`
 
 	// The binary template can be used when downloading GitHub
 	// It assumes that the only part of the URL needing to be
 	// templated is the binary name on a standard GitHub download
 	// URL.
-	BinaryTemplate string
+	BinaryTemplate string `yaml:"binaryTemplate"`
 
 	// NoExtension is required for tooling such as kubectx
 	// which at time of writing is a bash script.
-	NoExtension bool
+	NoExtension bool `yaml:"noExtension"`
 }
 
 type ToolLocal struct {
